@@ -1,5 +1,5 @@
 {
-  "productName": "Keira3",
+  "productName": "DusKeira",
   "asarUnpack": ["dist/assets/sqlite.db", "dist/assets/item_display.db"],
   "directories": {
     "output": "release/"

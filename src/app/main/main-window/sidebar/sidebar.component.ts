@@ -15,6 +15,7 @@ import { SpellLootHandlerService } from '../../../features/other-loots/spell-loo
 import { QuestHandlerService } from '../../../features/quest/quest-handler.service';
 import { SpellHandlerService } from '../../../features/spell/spell-handler.service';
 import { SidebarService } from './sidebar.service';
+import { ForgeHandlerService } from 'app/features/forge-talents/forge-handler.service';
 
 const animationTime = 200;
 
@@ -41,10 +42,11 @@ export class SidebarComponent {
     conditions: 'up',
     gossip: 'up',
     spell: 'up',
+    forge: 'up',
   };
   private readonly IMAGES_COUNT = 7;
   private readonly RANDOM_IMAGE = Math.floor(Math.random() * this.IMAGES_COUNT) + 1;
-  readonly style = `background-image: url(assets/img/sidebar-backgrounds/bg${this.RANDOM_IMAGE}.jpg);`;
+  readonly style = ``;
 
   constructor(
     public sidebarService: SidebarService,
@@ -61,6 +63,7 @@ export class SidebarComponent {
     public fishingLootHandlerService: FishingLootHandlerService,
     public mailLootHandlerService: MailLootHandlerService,
     public spellHandlerService: SpellHandlerService,
+    public forgeHandlerService: ForgeHandlerService,
     private locationService: LocationService,
   ) {}
 

@@ -8,7 +8,9 @@ import { GAMEOBJECT_QUESTSTARTER_TABLE } from '@keira-types/gameobject-queststar
 import { QUEST_OFFER_REWARD_TABLE } from '@keira-types/quest-offer-reward.type';
 import { QUEST_REQUEST_ITEMS_TABLE } from '@keira-types/quest-request-items.type';
 import { QUEST_TEMPLATE_ADDON_TABLE } from '@keira-types/quest-template-addon.type';
+import { QUEST_POI_TABLE } from '@keira-types/quest-poi.type';
 import { QuestTemplate, QUEST_TEMPLATE_TABLE } from '@keira-types/quest-template.type';
+import { QUEST_POI_POINTS_TABLE } from '@keira-shared/types/quest-poi-points.type';
 
 @Injectable()
 export class QuestHandlerService extends HandlerService<QuestTemplate> {
@@ -36,12 +38,20 @@ export class QuestHandlerService extends HandlerService<QuestTemplate> {
   get isGameobjectQuestenderUnsaved(): boolean {
     return this.statusMap[GAMEOBJECT_QUESTENDER_TABLE];
   }
+  get isQuestPoIUnsaved(): boolean {
+    return this.statusMap[QUEST_POI_TABLE];
+  }
+  get isQuestPoIPointsUnsaved(): boolean {
+    return this.statusMap[QUEST_POI_POINTS_TABLE];
+  }
 
   protected _statusMap = {
     [QUEST_TEMPLATE_TABLE]: false,
     [QUEST_TEMPLATE_ADDON_TABLE]: false,
     [QUEST_OFFER_REWARD_TABLE]: false,
     [QUEST_REQUEST_ITEMS_TABLE]: false,
+    [QUEST_POI_TABLE]: false,
+    [QUEST_POI_POINTS_TABLE]: false,
     [CREATURE_QUESTSTARTER_TABLE]: false,
     [CREATURE_QUESTENDER_TABLE]: false,
     [GAMEOBJECT_QUESTSTARTER_TABLE]: false,

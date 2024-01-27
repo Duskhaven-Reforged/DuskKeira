@@ -131,22 +131,26 @@ export abstract class MultiRowEditorService<T extends TableRow> extends EditorSe
   onRowSelection({ selected }: { selected: T[] }): void {
     const newId = selected[0][this._entitySecondIdField];
 
+    // If the new ID is the same as the currently selected ID, do nothing
     if (newId === this._selectedRowId) {
       return;
     }
+
+    // Filter the rows based on the second ID
+    const selectedRow = this._newRows.filter((row) => row[this._entitySecondIdField] === newId)[0];
+    console.log(selectedRow);
 
     this._loading = true;
     this._selectedRowId = newId;
     this._form.enable();
     this._form.reset();
 
-    const index = this.getSelectedRowIndex();
-
+    // Use the selectedRow for setting the form controls
     for (const field of this.fields) {
       const control = this._form.controls[field];
       /* istanbul ignore else */
       if (control) {
-        control.setValue(this._newRows[index][field]);
+        control.setValue(selectedRow[field]);
       } else {
         console.error(`Control '${field}' does not exist!`);
         console.log(`----------- DEBUG CONTROL KEYS:`);

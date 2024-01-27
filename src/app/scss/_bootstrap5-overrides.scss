@@ -10,6 +10,24 @@ a {
   display: inline-block;
   width: auto;
   vertical-align: middle;
+  background: #232323;
+  border: 1px solid hsl(0%, 0%, 22%);
+}
+
+.form-control {
+  background: #232323;
+  border: 1px solid hsl(0%, 0%, 22%);
+  color: #fff;
+}
+
+.form-control:focus {
+  color: #fff;
+  background: #343434;
+}
+
+.form-control:disabled {
+  color: #fff;
+  background: #101010;
 }
 
 .form-row {
@@ -17,6 +35,10 @@ a {
   flex-wrap: wrap;
   margin-right: -5px;
   margin-left: -5px;
+}
+
+.form-control::placeholder {
+  color: #ffffff76;
 }
 
 label {

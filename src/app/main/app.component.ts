@@ -32,7 +32,7 @@ export class AppComponent extends SubscriptionHandler implements OnInit {
   ngOnInit(): void {
     this.handleConnectionLostAlerts();
     this.handleSqliteTest();
-    this.handleNewerVersionAlert();
+    // this.handleNewerVersionAlert();
   }
 
   private handleSqliteTest(): void {
@@ -60,14 +60,14 @@ export class AppComponent extends SubscriptionHandler implements OnInit {
     );
   }
 
-  private handleNewerVersionAlert(): void {
-    this.subscriptions.push(
-      this.http.get<{ tag_name: string }>(LATEST_RELEASE_API_URL).subscribe((release) => {
-        const currentTag = `v${packageInfo.version}`;
-        if (currentTag !== release.tag_name) {
-          this.showNewerVersionAlert = true;
-        }
-      }),
-    );
-  }
+  // private handleNewerVersionAlert(): void {
+  //   this.subscriptions.push(
+  //     this.http.get<{ tag_name: string }>(LATEST_RELEASE_API_URL).subscribe((release) => {
+  //       const currentTag = `v${packageInfo.version}`;
+  //       if (currentTag !== release.tag_name) {
+  //         this.showNewerVersionAlert = true;
+  //       }
+  //     }),
+  //   );
+  // }
 }

@@ -31,6 +31,8 @@ import { GameobjectQueststarterService } from './gameobject-queststarter/gameobj
 import { QuestHandlerService } from './quest-handler.service';
 import { QuestOfferRewardComponent } from './quest-offer-reward/quest-offer-reward.component';
 import { QuestOfferRewardService } from './quest-offer-reward/quest-offer-reward.service';
+import { QuestPoIComponent } from './quest-poi/quest-poi.component';
+import { QuestPoIService } from './quest-poi/quest-poi.service';
 import { QuestPreviewComponent } from './quest-preview/quest-preview.component';
 import { QuestPreviewService } from './quest-preview/quest-preview.service';
 import { QuestRequestItemsComponent } from './quest-request-items/quest-request-items.component';
@@ -40,6 +42,9 @@ import { QuestTemplateAddonService } from './quest-template-addon/quest-template
 import { QuestTemplateComponent } from './quest-template/quest-template.component';
 import { QuestTemplateService } from './quest-template/quest-template.service';
 import { SelectQuestModule } from './select-quest/select-quest.module';
+import { AreaSelectorModule } from '@keira-shared/modules/selectors/area-selector/area-selector.module';
+import { QuestPoIPointsComponent } from './quest-poi-points/quest-poi-points.component';
+import { QuestPoIPointsService } from './quest-poi-points/quest-poi-points.service';
 
 const components = [
   CreatureQuestenderComponent,
@@ -47,6 +52,8 @@ const components = [
   GameobjectQueststarterComponent,
   GameobjectQuestenderComponent,
   QuestOfferRewardComponent,
+  QuestPoIComponent,
+  QuestPoIPointsComponent,
   QuestRequestItemsComponent,
   QuestTemplateComponent,
   QuestPreviewComponent,
@@ -79,6 +86,7 @@ const components = [
     IconModule,
     CollapseModule,
     TranslateModule,
+    AreaSelectorModule,
   ],
   providers: [
     QuestHandlerService,
@@ -89,6 +97,8 @@ const components = [
     GameobjectQuestenderService,
     QuestRequestItemsService,
     QuestOfferRewardService,
+    QuestPoIService,
+    QuestPoIPointsService,
     QuestTemplateService,
     QuestTemplateAddonService,
   ],

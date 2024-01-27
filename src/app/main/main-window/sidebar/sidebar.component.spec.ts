@@ -23,6 +23,7 @@ import { SpellHandlerService } from '../../../features/spell/spell-handler.servi
 import { SidebarComponent } from './sidebar.component';
 import { SidebarModule } from './sidebar.module';
 import { SidebarService } from './sidebar.service';
+import { ForgeHandlerService } from 'app/features/forge-talents/forge-handler.service';
 
 class SidebarComponentPage extends PageObject<SidebarComponent> {
   get toggleSidebarBtn(): HTMLButtonElement {
@@ -56,6 +57,7 @@ describe('SidebarComponent', () => {
         FishingLootHandlerService,
         MailLootHandlerService,
         SpellHandlerService,
+        ForgeHandlerService,
       ],
     }).compileComponents();
   }));

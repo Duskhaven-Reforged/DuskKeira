@@ -38,6 +38,7 @@ $img-border-color: rgba(255, 255, 255, 0.1);
     transform: rotate(0deg);
   }
 }
+
 .sidebar {
   width: $sidebar-width;
   height: 100%;
@@ -163,6 +164,7 @@ $img-border-color: rgba(255, 255, 255, 0.1);
           position: relative;
           padding: 8px 30px 8px 10px;
           cursor: pointer;
+          border-bottom: 1px solid hsl(0deg 0% 18%);
 
           i {
             margin-right: 10px;
@@ -241,11 +243,16 @@ $img-border-color: rgba(255, 255, 255, 0.1);
 }
 
 .sidebar {
-  background-color: $bg-sidebar-wrapper;
+  background-color: #1c1c1c;
+  border: 1px solid hsl(0deg 0% 18%);
 
   .sidebar-profile,
   .sidebar-menu {
     border-top: 1px solid $border-color;
+  }
+
+  .smallercase {
+    font-size: 13px;
   }
 
   .sidebar-profile .user-info .db-user,
@@ -273,7 +280,6 @@ $img-border-color: rgba(255, 255, 255, 0.1);
   .sidebar-menu ul li a i,
   .sidebar-menu .sidebar-dropdown div {
     background-color: $border-color;
-    border: none;
     margin-left: 1px;
   }
 
@@ -303,7 +309,8 @@ $img-border-color: rgba(255, 255, 255, 0.1);
 
     .sidebar-menu ul li a i,
     .sidebar-menu .sidebar-dropdown div {
-      background-color: $img-border-color;
+      background-color: #232323;
+      border: 1px solid hsl(0deg 0% 18%);
     }
   }
 }

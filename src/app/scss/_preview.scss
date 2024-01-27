@@ -23,7 +23,8 @@ $preview-width: 240px;
   right: 0;
   padding-top: 22px;
   height: 100%;
-  background-color: #080d22;
+  background-color: #232323;
+  border: 1px solid hsl(0%, 0%, 22%);
   overflow: auto;
 
   .perfect-scrollbar {

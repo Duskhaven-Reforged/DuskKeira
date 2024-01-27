@@ -1,0 +1,118 @@
+<keira-top-bar [handler]="handlerService"></keira-top-bar>
+
+<div class="container-fluid editor-with-preview" [ngClass]="">
+  <span *ngIf="editorService.loading" [translate]="'LOADING'"></span>
+
+  <div *ngIf="editorService.form && !!editorService.loadedEntityId && !editorService.loading">
+    <div class="content-block">
+      <keira-query-output
+        [docUrl]="docUrl"
+        [editorService]="editorService"
+        (executeQuery)="editorService.save($event)"
+      ></keira-query-output>
+    </div>
+
+    <div class="content-block">
+      <form [formGroup]="editorService.form" class="form-group edit-form">
+        <div class="row">
+          <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+            <label class="control-label" for="QuestId">QuestId</label>
+            <i class="fas fa-info-circle ms-1" placement="auto" [tooltip]="'QuestID'"></i>
+            <input [formControlName]="'QuestID'" id="QuestID" type="number" class="form-control form-control-sm" />
+          </div>
+
+          <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+            <label class="control-label" for="id">ID</label>
+            <i class="fas fa-info-circle ms-1" placement="auto" [tooltip]="'ID'"></i>
+            <input [formControlName]="'id'" id="id" type="number" class="form-control form-control-sm" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+            <label class="control-label" for="ObjectiveIndex">ObjectiveIndex</label>
+            <i class="fas fa-info-circle ms-1" placement="auto" [tooltip]="'ObjectiveIndex'"></i>
+            <input [formControlName]="'ObjectiveIndex'" id="ObjectiveIndex" type="number" class="form-control form-control-sm" />
+          </div>
+
+          <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+            <label class="control-label" for="MapID">MapId</label>
+            <i class="fas fa-info-circle ms-1" placement="auto" [tooltip]="'MapID'"></i>
+            <keira-single-value-selector-btn
+              [control]="editorService.form.controls['MapID']"
+              [config]="{ options: MAPID, name: 'MapID' }"
+              [modalClass]="'modal-md'"
+            ></keira-single-value-selector-btn>
+            <input [formControlName]="'MapID'" id="MapID" type="number" class="form-control form-control-sm" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+            <label class="control-label" for="WorldMapAreaId">WorldMapAreaId</label>
+            <i class="fas fa-info-circle ms-1" placement="auto" [tooltip]="'WorldMapAreaId'"></i>
+            <input [formControlName]="'WorldMapAreaId'" id="WorldMapAreaId" type="number" class="form-control form-control-sm" />
+          </div>
+
+          <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+            <label class="control-label" for="Floor">Floor</label>
+            <i class="fas fa-info-circle ms-1" placement="auto" [tooltip]="'Floor'"></i>
+            <keira-area-selector-btn
+              [config]="{ name: 'areaId' }"
+              [control]="editorService.form.controls['Floor']"
+            ></keira-area-selector-btn>
+            <input [formControlName]="'Floor'" id="Floor" type="number" class="form-control form-control-sm" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+            <label class="control-label" for="Priority">Priority</label>
+            <i class="fas fa-info-circle ms-1" placement="auto" [tooltip]="'Priority'"></i>
+            <input [formControlName]="'Priority'" id="Priority" type="number" class="form-control form-control-sm" />
+          </div>
+
+          <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+            <label class="control-label" for="Flags">Flags</label>
+            <i class="fas fa-info-circle ms-1" placement="auto" [tooltip]="'Flags'"></i>
+            <input [formControlName]="'Flags'" id="Flags" type="number" class="form-control form-control-sm" />
+          </div>
+        </div>
+      </form>
+
+      <div class="row">
+        <div class="col-12">
+          <keira-editor-buttons [editorService]="editorService"></keira-editor-buttons>
+
+          <ngx-datatable
+            id="editor-table"
+            class="bootstrap table table-striped text-center datatable-select"
+            [rows]="editorService.newRows"
+            [headerHeight]="DTCFG.headerHeight"
+            [footerHeight]="DTCFG.footerHeight"
+            [columnMode]="DTCFG.columnMode"
+            [rowHeight]="DTCFG.rowHeight"
+            [selectionType]="DTCFG.selectionType"
+            (select)="editorService.onRowSelection($event)"
+            (keydown.delete)="editorService.deleteSelectedRow()"
+          >
+            <ngx-datatable-column [minWidth]="30" [maxWidth]="30" [sortable]="false">
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                <i [hidden]="!editorService.isRowSelected(row)" class="fas fa-chevron-right"></i>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="id" prop="id" [minWidth]="80" [maxWidth]="150"></ngx-datatable-column>
+            <ngx-datatable-column name="ObjectiveIndex" prop="ObjectiveIndex" [minWidth]="80" [maxWidth]="150"></ngx-datatable-column>
+            <ngx-datatable-column name="MapID" prop="MapID" [minWidth]="80" [maxWidth]="150"></ngx-datatable-column>
+            <ngx-datatable-column name="WorldMapAreaId" prop="WorldMapAreaId" [minWidth]="80" [maxWidth]="150"></ngx-datatable-column>
+            <ngx-datatable-column name="Floor" prop="Floor" [minWidth]="80" [maxWidth]="150"></ngx-datatable-column>
+            <ngx-datatable-column name="Priority" prop="Priority" [minWidth]="80" [maxWidth]="150"></ngx-datatable-column>
+            <ngx-datatable-column name="Flags" prop="Flags" [minWidth]="80" [maxWidth]="150"></ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+
+    <!-- <keira-quest-preview></keira-quest-preview> -->
+  </div>
+</div>

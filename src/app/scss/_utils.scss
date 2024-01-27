@@ -3,7 +3,9 @@ pre {
 }
 
 code.hljs {
-  background-color: #efefef;
+  background-color: #1c1c1c;
+  border: 1px solid hsl(0%, 0%, 22%);
+  color: #fff;
   padding: 10px;
   min-height: 38px;
 }

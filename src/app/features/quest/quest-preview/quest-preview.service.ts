@@ -34,6 +34,8 @@ import { QuestRequestItemsService } from '../quest-request-items/quest-request-i
 import { QuestTemplateAddonService } from '../quest-template-addon/quest-template-addon.service';
 import { QuestTemplateService } from '../quest-template/quest-template.service';
 import { DifficultyLevel, Quest, QuestReputationReward } from './quest-preview.model';
+import { QuestPoIService } from '../quest-poi/quest-poi.service';
+import { QuestPoI } from '@keira-shared/types/quest-poi.type';
 
 @Injectable()
 export class QuestPreviewService {
@@ -52,6 +54,7 @@ export class QuestPreviewService {
     private readonly questRequestItemsService: QuestRequestItemsService,
     private readonly questTemplateAddonService: QuestTemplateAddonService,
     private readonly questOfferRewardService: QuestOfferRewardService,
+    private readonly questPoIService: QuestPoIService,
     private readonly gameobjectQueststarterService: GameobjectQueststarterService,
     private readonly gameobjectQuestenderService: GameobjectQuestenderService,
     private readonly creatureQueststarterService: CreatureQueststarterService,
@@ -72,6 +75,10 @@ export class QuestPreviewService {
   }
   get questOfferReward(): QuestOfferReward {
     return this.questOfferRewardService.form.getRawValue();
+  }
+  get questPoI(): QuestPoI {
+    console.log('This is QuestPoI' + this.questPoIService.error);
+    return this.questPoIService.form.getRawValue();
   }
   get questRequestItems(): QuestRequestItems {
     return this.questRequestItemsService.form.getRawValue();

@@ -92,6 +92,8 @@
       "QUEST_TEMPLATE": "Quest Template",
       "QUEST_TEMPLATE_ADDON": "Quest Template Addon",
       "QUEST_OFFER_REWARD": "Quest Offer Reward",
+      "QUEST_POI": "Quest Point of Interest",
+      "QUEST_POI_POINTS": "Quest PoI Points",
       "QUEST_REQUEST_ITEMS": "Quest Request Items",
       "CREATURE_QUESTSTARTER": "Creature Queststarter",
       "CREATURE_QUESTENDER": "Creature Questender",
@@ -149,6 +151,11 @@
     },
     "SPELL_DBC_OVERRIDES": {
       "TITLE": "Spell DBC overrides",
+      "SEARCH_SPELL": "Search Spell",
+      "SPELL_DBC_EDITOR": "Spell DBC editor"
+    },
+    "FORGE_TALENTS": {
+      "TITLE": "Forge Talents",
       "SEARCH_SPELL": "Search Spell",
       "SPELL_DBC_EDITOR": "Spell DBC editor"
     }

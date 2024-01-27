@@ -32,6 +32,7 @@ import { SpellModule } from './features/spell/spell.module';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ForgeModule } from './features/forge-talents/forge.module';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -73,6 +74,7 @@ export function createTranslateLoader(http: HttpClient) {
     ConditionsModule,
     SmartScriptsModule,
     SpellModule,
+    ForgeModule,
   ],
   bootstrap: [AppComponent],
   providers: [

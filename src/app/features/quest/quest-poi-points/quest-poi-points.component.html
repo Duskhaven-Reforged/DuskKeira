@@ -1,0 +1,93 @@
+<keira-top-bar [handler]="handlerService"></keira-top-bar>
+
+<div class="container-fluid editor-with-preview" [ngClass]="{ 'show-preview': questPreviewService.showPreview }">
+  <span *ngIf="editorService.loading" [translate]="'LOADING'"></span>
+
+  <div *ngIf="editorService.form && !!editorService.loadedEntityId && !editorService.loading">
+    <div class="content-block">
+      <keira-query-output
+        [docUrl]="docUrl"
+        [editorService]="editorService"
+        (executeQuery)="editorService.save($event)"
+      ></keira-query-output>
+    </div>
+
+    <div class="content-block">
+      <form [formGroup]="editorService.form" class="form-group edit-form">
+        <div class="row">
+          <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+            <label class="control-label" for="QuestID">QuestID</label>
+            <i class="fas fa-info-circle ms-1" placement="auto" [tooltip]="'QuestID'"></i>
+            <input [formControlName]="'QuestID'" id="QuestID" type="number" class="form-control form-control-sm" />
+          </div>
+
+          <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+            <label class="control-label" for="Idx1">Idx1</label>
+            <i class="fas fa-info-circle ms-1" placement="auto" [tooltip]="'Idx1'"></i>
+            <input [formControlName]="'Idx1'" id="Idx1" type="number" class="form-control form-control-sm" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+            <label class="control-label" for="Idx2">Idx2</label>
+            <i class="fas fa-info-circle ms-1" placement="auto" [tooltip]="'Idx2'"></i>
+            <input [formControlName]="'Idx2'" id="Idx2" type="number" class="form-control form-control-sm" />
+          </div>
+
+          <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+            <label class="control-label" for="X">X</label>
+            <i class="fas fa-info-circle ms-1" placement="auto" [tooltip]="'X'"></i>
+            <input [formControlName]="'X'" id="X" type="number" class="form-control form-control-sm" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+            <label class="control-label" for="Y">Y</label>
+            <i class="fas fa-info-circle ms-1" placement="auto" [tooltip]="'Y'"></i>
+            <input [formControlName]="'Y'" id="Y" type="number" class="form-control form-control-sm" />
+          </div>
+
+          <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+            <label class="control-label" for="VerifiedBuild">VerifiedBuild</label>
+            <i class="fas fa-info-circle ms-1" placement="auto" [tooltip]="'VerifiedBuild'"></i>
+            <input [formControlName]="'VerifiedBuild'" id="VerifiedBuild" type="number" class="form-control form-control-sm" />
+          </div>
+        </div>
+      </form>
+
+      <div class="row">
+        <div class="col-12">
+          <keira-editor-buttons [editorService]="editorService"></keira-editor-buttons>
+
+          <ngx-datatable
+            id="editor-table"
+            class="bootstrap table table-striped text-center datatable-select"
+            [rows]="editorService.newRows"
+            [headerHeight]="DTCFG.headerHeight"
+            [footerHeight]="DTCFG.footerHeight"
+            [columnMode]="DTCFG.columnMode"
+            [rowHeight]="DTCFG.rowHeight"
+            [selectionType]="DTCFG.selectionType"
+            (select)="editorService.onRowSelection($event)"
+            (keydown.delete)="editorService.deleteSelectedRow()"
+          >
+            <ngx-datatable-column [minWidth]="30" [maxWidth]="30" [sortable]="false">
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                <i [hidden]="!editorService.isRowSelected(row)" class="fas fa-chevron-right"></i>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Idx2" prop="Idx2" [minWidth]="80" [maxWidth]="150"></ngx-datatable-column>
+            <ngx-datatable-column name="Idx1" prop="Idx1" [minWidth]="80" [maxWidth]="150"></ngx-datatable-column>
+            <ngx-datatable-column name="X" prop="X" [minWidth]="80" [maxWidth]="150"></ngx-datatable-column>
+            <ngx-datatable-column name="Y" prop="Y" [minWidth]="80" [maxWidth]="150"></ngx-datatable-column>
+            <ngx-datatable-column name="VerifiedBuild" prop="VerifiedBuild" [minWidth]="80" [maxWidth]="150"></ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+
+    <keira-quest-preview></keira-quest-preview>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-<nav id="sidebar" class="sidebar perfect-scrollbar-transparent" [ngClass]="{ 'sidebar-bg': hasBackgroundImage() }" [style]="style">
+<nav id="sidebar" class="sidebar perfect-scrollbar-transparent" [style]="style">
   <div class="sidebar-content">
     <div class="transparent perfect-scrollbar">
       <div class="sidebar-header">
@@ -38,19 +38,19 @@
 
       <div class="sidebar-menu">
         <ul>
-          <li>
+          <li class="sideborder">
             <a id="dashboard-toggle" href="#" [routerLink]="''">
               <i class="fa fa-tachometer-alt"></i> {{ 'SIDEBAR.DASHBOARD' | translate }}
             </a>
           </li>
 
-          <li>
+          <li class="sideborder">
             <a id="sql-editor-toggle" href="#" [routerLink]="'sql-editor'">
               <i class="fa fa-code"></i> {{ 'SIDEBAR.SQL_EDITOR' | translate }}
             </a>
           </li>
 
-          <li>
+          <li class="sideborder">
             <a id="collapse-all" (click)="collapseAll()">
               <i class="fas fa-angle-double-up"></i> {{ 'SIDEBAR.COLLAPSE_ALL' | translate }}
             </a>
@@ -203,6 +203,18 @@
                       <a href="#" routerLinkActive="active" [routerLink]="'quest/quest-offer-reward'">
                         {{ 'SIDEBAR.QUEST.QUEST_OFFER_REWARD' | translate }}
                         <keira-unsaved-icon *ngIf="questHandlerService.isQuestOfferRewardUnsaved"></keira-unsaved-icon>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" routerLinkActive="active" [routerLink]="'quest/quest-poi'">
+                        {{ 'SIDEBAR.QUEST.QUEST_POI' | translate }}
+                        <keira-unsaved-icon *ngIf="questHandlerService.isQuestPoIUnsaved"></keira-unsaved-icon>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" routerLinkActive="active" [routerLink]="'quest/quest-poi-points'">
+                        {{ 'SIDEBAR.QUEST.QUEST_POI_POINTS' | translate }}
+                        <keira-unsaved-icon *ngIf="questHandlerService.isQuestPoIPointsUnsaved"></keira-unsaved-icon>
                       </a>
                     </li>
                     <li>
@@ -513,7 +525,7 @@
           </li>
 
           <li class="sidebar-dropdown" [ngClass]="{ active: menuStates.spell === 'down' }">
-            <a (click)="toggleState('spell')">
+            <a (click)="toggleState('spell')" class="smallercase">
               <i class="fa fa-magic"></i>
               <span [translate]="'SIDEBAR.SPELL_DBC_OVERRIDES.TITLE'"></span>
             </a>
@@ -536,12 +548,36 @@
               </ul>
             </div>
           </li>
+          <li class="sidebar-dropdown" [ngClass]="{ active: menuStates.forge === 'down' }">
+            <a (click)="toggleState('forge')" class="smallercase">
+              <i class="fa fa-hammer"></i>
+              <span [translate]="'SIDEBAR.FORGE_TALENTS.TITLE'"></span>
+            </a>
+
+            <div class="sidebar-submenu" [@slide]="menuStates.forge">
+              <ul>
+                <li>
+                  <a href="#" routerLinkActive="active" [routerLink]="'spell/select'">
+                    {{ 'SIDEBAR.SPELL_DBC_OVERRIDES.SEARCH_SPELL' | translate }}
+                  </a>
+                </li>
+                <ng-container *ngIf="forgeHandlerService.selected">
+                  <li>
+                    <a href="#" routerLinkActive="active" [routerLink]="'spell/spell-dbc'">
+                      {{ 'SIDEBAR.SPELL_DBC_OVERRIDES.SPELL_DBC_EDITOR' | translate }}
+                      <keira-unsaved-icon *ngIf="forgeHandlerService.isForgeUnsaved"></keira-unsaved-icon>
+                    </a>
+                  </li>
+                </ng-container>
+              </ul>
+            </div>
+          </li>
         </ul>
       </div>
     </div>
   </div>
 
-  <button class="btn btn-secondary btn-sm sidebar-button" (click)="toggleSidebar()">
+  <button class="btn btn-secondary btn-opaque btn-sm sidebar-button" (click)="toggleSidebar()">
     <i class="fas {{ getSideBarState() ? 'fa-angle-double-right' : 'fa-angle-double-left' }}"></i>
   </button>
 </nav>

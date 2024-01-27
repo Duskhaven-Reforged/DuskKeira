@@ -74,6 +74,8 @@ import { MailLootHandlerService } from '../features/other-loots/mail-loot/mail-l
 import { SelectSpellComponent } from '../features/spell/select-spell/select-spell.component';
 import { SpellDbcComponent } from '../features/spell/spell-dbc/spell-dbc.component';
 import { GameobjectSpawnAddonComponent } from '../features/gameobject/gameobject-spawn-addon/gameobject-spawn-addon.component';
+import { QuestPoIComponent } from 'app/features/quest/quest-poi/quest-poi.component';
+import { QuestPoIPointsComponent } from 'app/features/quest/quest-poi-points/quest-poi-points.component';
 
 const routes: Routes = [
   {
@@ -193,6 +195,16 @@ const routes: Routes = [
       {
         path: 'quest-offer-reward',
         component: QuestOfferRewardComponent,
+        canActivate: [QuestHandlerService],
+      },
+      {
+        path: 'quest-poi',
+        component: QuestPoIComponent,
+        canActivate: [QuestHandlerService],
+      },
+      {
+        path: 'quest-poi-points',
+        component: QuestPoIPointsComponent,
         canActivate: [QuestHandlerService],
       },
       {

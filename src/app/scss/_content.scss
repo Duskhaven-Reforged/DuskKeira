@@ -1,14 +1,84 @@
 @import 'variables';
 
 .modal-content {
-  background-color: $content-block-bg-color;
+  background-color: #232323;
+  border: 1px solid hsl(0%, 0%, 22%);
+  color: #fff;
+}
+
+body {
+  font-family: 'Montserrat';
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #484848;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #393939;
+}
+
+.table {
+  --bs-table-bg: #232323;
+  --bs-table-color-type: #fff;
+  --bs-table-bg-type: #a7a7a70d;
+  border: 1px solid hsl(0deg 0% 20%);
+  border-radius: 0.75rem;
+}
+
+.hljs-string {
+  color: #add3ff;
+}
+
+.hljs-attr,
+.hljs-attribute,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-operator,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-id,
+.hljs-variable {
+  color: #80bbff;
+}
+
+.btn-secondary {
+  --bs-btn-bg: #1c1c1c;
+  --bs-btn-hover-bg: #232323;
+  --bs-btn-hover-color: #fff;
+  border: 1px solid hsl(0deg 0% 18%);
+
+  option {
+    color: #fff;
+  }
+}
+
+.btn-opaque {
+  background: #232323;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+  --bs-table-color-type: #fff;
+  --bs-table-bg-type: #a7a7a70d;
 }
 
 .page-wrapper {
   height: 100vh;
 
   .page-content {
-    background-color: #00000024;
+    background-color: #1c1c1c;
     min-height: 100vh;
     display: inline-block;
     width: 100%;
@@ -16,12 +86,16 @@
     padding-left: $sidebar-width;
 
     .content-block {
-      background-color: $content-block-bg-color;
+      border: 1px solid hsl(0deg 0% 18%);
+      background: #232323;
+      color: #fff;
       padding: 20px 16px;
       margin-top: 15px;
       margin-bottom: 15px;
       border-radius: 4px;
-      box-shadow: 0 0 15px 1px rgba(43, 43, 43, 0.1), 0 11px 6px -7px rgba(43, 43, 43, 0.1);
+      box-shadow:
+        0 0 15px 1px rgba(43, 43, 43, 0.1),
+        0 11px 6px -7px rgba(43, 43, 43, 0.1);
     }
   }
 
